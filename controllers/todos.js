@@ -81,4 +81,27 @@ router.post('/:todoId/comments', async (req, res) => {
     }
 });
 
+router.put('/:todoId/comments/:commentId', async (req, res) => {
+    try {
+        const todo = await Todo.findById(req.params.todoId);
+        const comment = todo.comments.id(req.params.commentId);
+        comment.text = req.body.text;
+        await todo.save();
+        res.status(200).json({ comment });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.delete('/:todoId/comments/:commentId', async (req, res) => {
+    try {
+        const todo = await Todo.findById(req.params.todoId);
+        todo.comments.remove({ _id: req.params.commentId });
+        await todo.save();
+        res.status(200).json({ todo });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 module.exports = router;

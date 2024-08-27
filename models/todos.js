@@ -21,6 +21,7 @@ const todoSchema = new mongoose.Schema(
             type: [String]
         },
         comments: [commentSchema],
+        creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
     }
 );
 

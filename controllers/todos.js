@@ -7,7 +7,10 @@ router.use(verifyToken);
 
 router.post('/', async (req, res) => {
     try {
+        req.body.creator = req.user._id;
         const todo = await Todo.create(req.body);
+        todo._doc.creator = req.user;
+
         res.status(201).json(todo);
     } catch (error) {
         console.log(error);

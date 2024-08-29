@@ -12,8 +12,7 @@ const reminderSchema = new mongoose.Schema(
         time: {
             type: Number
         },
-    },
-    { timestamps: true }
+    }
 );
 
 const Reminder = mongoose.model('Reminder', reminderSchema);

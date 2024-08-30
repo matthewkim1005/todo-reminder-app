@@ -10,7 +10,7 @@ const reminderSchema = new mongoose.Schema(
             type: Date
         },
         time: {
-            type: Number
+            type: String
         },
     }
 );

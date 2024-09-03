@@ -33,24 +33,6 @@ router.get('/:reminderId', async (req, res) => {
     }
 });
 
-router.put('/:reminderId', async (req, res) => {
-    try {
-        const reminder = await Reminder.findById(req.params.reminderId);
-
-        // Update Reminder:
-        const updatedReminder = await Reminder.findByIdAndUpdate(
-            req.params.reminderId,
-            req.body,
-            { new: true }
-        );
-
-        // Issue JSON response:
-        res.status(200).json(updatedReminder);
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
-
 router.delete('/:reminderId', async (req, res) => {
     try {
         const reminder = await Reminder.findById(req.params.reminderId);

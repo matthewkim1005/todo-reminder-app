@@ -27,6 +27,15 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get('/myTodos', async (req, res) => {
+    try {
+        const todos = await Todo.find({}).populate('creator').sort({ createdAt: 'desc' });
+        res.status(200).json(todos);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+
 router.get('/:todoId', async (req, res) => {
     try {
         const todo = await Todo.findById(req.params.todoId).populate('creator').populate('comments.commentor');

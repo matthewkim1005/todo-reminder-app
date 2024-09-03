@@ -11,9 +11,8 @@
 ## Future Goals
 
 <h1>
-    Desctiption
+    Description
 </h1>
-<p>
     This back-end uses express, mongoose and MongoDB database to implement the full CRUD of this application.
 
     Users :
@@ -30,9 +29,6 @@
         - Create: Creates a reminder and can be accessed by the user.
         - Read: Gets the reminders from the reminder array and shows it for the user.
         - Delete: Can delete reminder if the user chooses to.
-</p>
-<p>
-    Uses Heroku to deploy the backend of this application.
-</p>
 
+    Uses Heroku to deploy the backend of this application.
 </div>

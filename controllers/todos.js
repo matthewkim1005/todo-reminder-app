@@ -38,7 +38,7 @@ router.get('/myTodos', async (req, res) => {
 
 router.get('/:todoId', async (req, res) => {
     try {
-        const todo = await Todo.findById(req.params.todoId).populate('creator').populate('comments.commentor');
+        const todo = await Todo.findById(req.params.todoId).populate('creator', 'comments.commentor');
         res.status(200).json(todo);
     } catch (error) {
         res.status(500).json(error);
@@ -75,8 +75,6 @@ router.delete('/:todoId', async (req, res) => {
 });
 
 router.post('/:todoId/comments', async (req, res) => {
-    console.log(req.params.todoId)
-    console.log(req.body)
     try {
         req.body.commentor = req.user._id;
         const todo = await Todo.findById(req.params.todoId);
